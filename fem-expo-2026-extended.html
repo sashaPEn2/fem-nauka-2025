@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ФЭМ.ЭКСПО 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4fb;color:#1a2340;min-height:100vh}
+:root{--red:#c0001e;--blue:#003087;--lb:#e8eef8;--lr:#fdeaed;--bdr:#d0d8e8;--gold:#d4a574;--green:#2d8659;--purple:#6b5b95;--orange:#e67e22}
+.hero{background:linear-gradient(120deg,#003087 55%,#c0001e 100%);color:#fff;padding:2rem 2rem 1.6rem;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;top:-50px;right:-70px;width:280px;height:280px;background:rgba(255,255,255,.05);border-radius:50%}
+.hi{display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;max-width:1100px;margin:0 auto}
+.hlogos{display:flex;gap:.8rem;align-items:center;flex-shrink:0}
+.hslot{width:60px;height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.hslot img{width:100%;height:100%;object-fit:contain}
+.hcenter{flex:1;text-align:center}
+.hero h1{font-size:2.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.3rem}
+.hero .sub{font-size:1rem;opacity:.8;margin-bottom:.2rem}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:.3rem 1rem;font-size:.82rem;margin-top:.5rem}
+.layout{display:flex;min-height:calc(100vh - 130px)}
+.sidebar{width:240px;flex-shrink:0;background:#fff;border-right:1.5px solid var(--bdr);padding:1.2rem 0;position:sticky;top:0;height:calc(100vh - 130px);overflow-y:auto}
+.ss{padding:.4rem 1rem .2rem;font-size:.72rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.08em;margin-top:.4rem}
+.si{display:flex;align-items:center;gap:.7rem;padding:.65rem 1.1rem;cursor:pointer;font-size:.88rem;color:#444;border-left:3px solid transparent;transition:.15s}
+.si:hover{background:var(--lb);color:var(--blue)}
+.si.active{background:var(--lb);color:var(--blue);border-left-color:var(--blue);font-weight:700}
+.si.active.red{background:var(--lr);color:var(--red);border-left-color:var(--red)}
+.slogo{width:28px;height:28px;border-radius:6px;background:var(--lb);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:var(--blue);flex-shrink:0;overflow:hidden}
+.slogo img{width:100%;height:100%;object-fit:contain}
+.sdiv{border:none;border-top:1px solid var(--bdr);margin:.6rem 1rem}
+main{flex:1;padding:1.8rem 1.6rem;overflow-y:auto}
+.intro{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;border-left:5px solid var(--blue)}
+.intro h2{color:var(--blue);font-size:1.2rem;margin-bottom:.4rem}
+.intro p{color:#555;font-size:.9rem;line-height:1.6}
+
+.info-notice{background:#fff3cd;border-left:5px solid #ffc107;border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.info-notice h3{color:#856404;font-size:1rem;font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.info-notice h3::before{content:'ℹ️';font-size:1.1rem}
+.info-notice p{color:#856404;font-size:.88rem;line-height:1.6}
+.info-notice a{color:#856404;font-weight:700;text-decoration:underline}
+.info-notice a:hover{color:#533f03}
+
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.dc{background:#fff;border:1.5px solid var(--bdr);border-radius:12px;padding:1.3rem;cursor:pointer;transition:.2s;border-top:4px solid var(--blue)}
+.dc:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,48,135,.1);transform:translateY(-2px)}
+.dclogo{width:48px;height:48px;border-radius:9px;background:var(--lb);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--blue);margin-bottom:.9rem;overflow:hidden}
+.dclogo img{width:100%;height:100%;object-fit:contain}
+.dc h3{font-size:.93rem;font-weight:700;color:var(--blue);margin-bottom:.45rem;line-height:1.4}
+.dc p{font-size:.8rem;color:#646464ec;line-height:1.5}
+.stats{display:flex;gap:.5rem;margin-top:.9rem;flex-wrap:wrap}
+.stat{background:var(--lb);border-radius:8px;padding:.25rem .65rem;font-size:.75rem;color:var(--blue);font-weight:600}
+.stat.r{background:var(--lr);color:var(--red)}
+.dh{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1.4rem;border:1.5px solid var(--bdr)}
+.dht{display:flex;gap:1.1rem;align-items:flex-start;margin-bottom:1rem}
+.dblogo{width:72px;height:72px;border-radius:12px;background:var(--lb);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--blue);flex-shrink:0;overflow:hidden;border:1.5px solid var(--bdr)}
+.dblogo img{width:100%;height:100%;object-fit:contain}
+.dmeta{display:flex;gap:.8rem;flex-wrap:wrap;padding-top:.9rem;border-top:1px solid var(--bdr);margin-top:.5rem}
+.dmi{font-size:.8rem;color:#555;display:flex;align-items:center;gap:.35rem}
+.dmi span{font-weight:600;color:#1a2340}
+.dlink{color:var(--blue);text-decoration:none;font-size:.82rem;border:1px solid var(--blue);border-radius:7px;padding:.25rem .7rem;white-space:nowrap}
+.dlink:hover{background:var(--blue);color:#fff}
+
+.snilb{background:var(--lr);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.4rem;border-left:4px solid var(--red)}
+.snilb-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.2rem}
+.snilb h4{color:var(--red);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.snilb-btn{background:var(--red);color:#fff;border:none;border-radius:8px;padding:.35rem .9rem;font-size:.78rem;font-weight:700;cursor:pointer;transition:.15s;white-space:nowrap}
+.snilb-btn:hover{background:#9a0018}
+.snilb-none{color:#7a0012;font-size:.87rem;font-style:italic;margin-top:.4rem}
+.snilb-list{margin-top:.5rem;display:flex;flex-direction:column;gap:.5rem}
+.snilb-item{display:flex;align-items:flex-start;gap:.6rem}
+.snilb-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:.3rem}
+.snilb-name{color:#7a0012;font-size:.87rem;font-weight:700}
+.snilb-lead{color:#a03040;font-size:.8rem;margin-top:.1rem}
+.snilb-footer{margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(192,0,30,.2);color:#7a0012;font-size:.82rem;line-height:1.5}
+.snilb-footer a{color:#7a0012;font-weight:700;text-decoration:underline}
+.snilb-footer a:hover{color:#9a0018}
+
+.smodal{background:#fff;border-radius:14px;max-width:600px;width:100%;padding:2rem;position:relative;max-height:90vh;overflow-y:auto}
+.smodal h3{font-size:1.1rem;font-weight:800;color:var(--red);margin-bottom:1.2rem;padding-right:2rem}
+.snilcard{border:1.5px solid var(--bdr);border-radius:10px;padding:1.1rem;margin-bottom:1rem;border-top:3px solid var(--red)}
+.snilcard-title{font-size:.95rem;font-weight:800;color:var(--red);margin-bottom:.7rem}
+.snilcard-row{display:flex;gap:.5rem;margin-bottom:.45rem;font-size:.85rem;align-items:flex-start}
+.snilcard-label{color:#999;min-width:110px;font-size:.78rem;flex-shrink:0}
+.snilcard-val{color:#1a2340;font-weight:600}
+.snilcard-stats{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap}
+.snilcard-stat{border-radius:8px;padding:.28rem .75rem;font-size:.78rem;font-weight:700}
+.snilcard-stat.blue{background:var(--lb);color:var(--blue)}
+.snilcard-stat.red{background:var(--lr);color:var(--red)}
+.no-snil{text-align:center;padding:2rem 1rem;color:#aaa;font-size:.9rem}
+
+.tabs{display:flex;gap:.5rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid var(--bdr);background:#fff;cursor:pointer;font-size:.85rem;transition:.2s;font-weight:600;color:#555}
+.tab.ab{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tab.ar{background:var(--red);color:#fff;border-color:var(--red)}
+.tab.ag{background:var(--green);color:#fff;border-color:var(--green)}
+.tab.ap{background:var(--purple);color:#fff;border-color:var(--purple)}
+.tab.ao{background:var(--orange);color:#fff;border-color:var(--orange)}
+.tab:hover:not(.ab):not(.ar):not(.ag):not(.ap):not(.ao){background:var(--lb);color:var(--blue)}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
+.ac{background:#fff;border:1.5px solid var(--bdr);border-radius:10px;padding:1.1rem;cursor:pointer;transition:.2s;border-top:3px solid var(--blue)}
+.ac.snil{border-top-color:var(--red)}
+.ac.olim{border-top-color:var(--green)}
+.ac.nirs{border-top-color:var(--purple)}
+.ac.impl{border-top-color:var(--orange)}
+.ac:hover{box-shadow:0 4px 16px rgba(0,48,135,.12);transform:translateY(-1px)}
+.at{font-size:.92rem;font-weight:700;color:#1a2340;margin-bottom:.5rem;line-height:1.4}
+.as{font-size:.82rem;color:var(--blue);font-weight:600}
+.ay{font-size:.76rem;color:#999;margin-top:.25rem}
+.atag{display:inline-block;font-size:.72rem;padding:.2rem .6rem;border-radius:12px;margin-top:.5rem;font-weight:600}
+.atag.i{background:var(--lb);color:var(--blue);text-transform:uppercase}
+.atag.s{background:var(--lr);color:var(--red);text-transform:uppercase}
+.atag.g{background:#d4edda;color:var(--green);text-transform:uppercase}
+.atag.p{background:#e2d4f0;color:var(--purple);text-transform:uppercase}
+.atag.o{background:#ffe8d6;color:var(--orange);text-transform:uppercase}
+.atag.pub{background:var(--lb);color:var(--blue);text-transform:uppercase}
+
+.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
+.mbg.open{display:flex}
+.modal{background:#fff;border-radius:14px;max-width:700px;width:100%;padding:2rem;position:relative;margin:auto}
+.mc{position:absolute;top:1rem;right:1rem;background:none;border:1px solid var(--bdr);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:1rem;color:#555}
+.mc:hover{background:#f5f5f5}
+.modal h3{font-size:1.2rem;font-weight:800;color:var(--blue);margin-bottom:1rem;line-height:1.4;padding-right:2rem}
+.mr{display:flex;gap:.5rem;margin-bottom:.65rem;font-size:.88rem;align-items:flex-start}
+.ml{color:#999;min-width:130px;font-size:.8rem;flex-shrink:0;padding-top:.1rem}
+.mv{color:#1a2340;font-weight:600}
+.mlink{color:var(--blue);text-decoration:underline;word-break:break-all;font-size:.85rem}
+.mtag{display:inline-block;padding:.28rem .9rem;border-radius:16px;font-size:.78rem;font-weight:700;margin-bottom:.9rem;text-transform:uppercase}
+.mtag.i{background:var(--lb);color:var(--blue)}
+.mtag.s{background:var(--lr);color:var(--red)}
+.mtag.g{background:#d4edda;color:var(--green)}
+.mtag.p{background:#e2d4f0;color:var(--purple)}
+.mtag.o{background:#ffe8d6;color:var(--orange)}
+.mtag.pub{background:var(--lb);color:var(--blue)}
+.mdiv{border:none;border-top:1px solid var(--bdr);margin:.9rem 0}
+.gallery{margin:1rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem}
+.gallery-item{position:relative;border-radius:8px;overflow:hidden;border:1.5px solid var(--bdr);background:#f9f9f9;cursor:pointer;transition:.2s}
+.gallery-item:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(0,48,135,.15)}
+.gallery-item img{width:100%;height:120px;object-fit:cover;display:block}
+.gallery-placeholder{width:100%;height:120px;background:#f0f4fb;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:.75rem;text-align:center;padding:.5rem}
+.gallery-count{position:absolute;top:.3rem;right:.3rem;background:rgba(0,0,0,.6);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.65rem;font-weight:700}
+
+.modal-section{margin-top:1.2rem}
+.modal-section h4{font-size:.9rem;font-weight:700;color:var(--blue);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;padding-bottom:.4rem;border-bottom:1px solid var(--bdr)}
+
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:2000;align-items:center;justify-content:center;padding:1rem}
+.lightbox.open{display:flex}
+.lightbox-img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
+.lightbox-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer}
+
+.guide{background:#fff;border-radius:12px;padding:1.8rem;max-width:680px}
+.guide h2{color:var(--blue);margin-bottom:1.2rem;font-size:1.25rem}
+.step{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
+.sn{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0}
+.sb h4{font-size:.92rem;font-weight:700;margin-bottom:.3rem}
+.sb p{font-size:.85rem;color:#555;line-height:1.6}
+.sb code{background:#f0f4ff;padding:.15rem .4rem;border-radius:5px;font-family:monospace;color:var(--blue);font-size:.8rem}
+
+.empty{text-align:center;padding:3rem 1rem;color:#bbb;font-size:.9rem}
+.hbtn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+.hbtn span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.topbar{display:none;background:var(--blue);padding:.5rem 1rem;align-items:center;gap:1rem}
+.tbt{color:#fff;font-size:.95rem;font-weight:700}
+
+@media(max-width:720px){
+  .sidebar{position:fixed;left:-250px;top:0;height:100vh;z-index:500;transition:.25s;box-shadow:2px 0 16px rgba(0,0,0,.12)}
+  .sidebar.open{left:0}
+  .layout{display:block}
+  main{padding:1.2rem}
+  .topbar{display:flex}
+  .hbtn{display:flex}
+  .hero{padding:1.4rem 1rem}
+  .hero h1{font-size:1.5rem}
+  .hlogos{display:none}
+  .modal{max-width:95vw;padding:1.5rem}
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hi">
+    <div class="hlogos">
+      <div class="hslot">
+        <img id="img-faculty" style="display:none"/>
+        <div id="ph-faculty" style="color:rgba(255,255,255,.5);font-size:.6rem;line-height:1.4;text-align:center">Логотип<br/>факультета</div>
+      </div>
+    </div>
+    <div class="hcenter">
+      <div class="sub">Белорусский государственный экономический университет</div>
+      <div class="sub">Факультет экономики и менеджмента</div>
+      <div class="sub">Студенческое научное общество</div>
+      <h1>ФЭМ.ЭКСПО 2026</h1>
+      <div class="badge">К 16-й Декаде студенческой науки — «Молодежь в бизнесе и науке — 2026»</div>
+    </div>
+    <div class="hlogos">
+      <div class="hslot">
+        <img id="img-sno" style="display:none"/>
+        <div id="ph-sno" style="color:rgba(255,255,255,.5);font-size:.6rem;line-height:1.4;text-align:center">Логотип<br/>СНО</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="topbar">
+  <button class="hbtn" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+  <span class="tbt" id="topbar-title"></span>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar">
+    <div class="ss">Навигация</div>
+    <div class="si active" id="nav-home" onclick="showPage('home')">
+      <div class="slogo">🏠</div>Главная
+    </div>
+    <hr class="sdiv"/>
+    <div class="ss">Кафедры</div>
+    <div id="dept-nav"></div>
+  </div>
+  <main id="app"></main>
+</div>
+
+<div class="mbg" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<div class="mbg" id="snilModal" onclick="closeSnilModal(event)">
+  <div class="smodal" id="snilModal-content"></div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt=""/>
+</div>
+
+<script>
+var LOGOS = {
+  faculty:   './logo.png',
+  sno:       './sno.png',
+  dept_agro: './kafedra-apk-scaled.png',
+  dept_ind:  './kafedra-prom.png',
+  dept_nat:  './kafedra-gos-upr.png',
+  dept_org:  './kafedra-org-i-upr.png'
+};
+
+var CF_SPACE = '67pjikftumko';
+var CF_TOKEN = 'j72kozyyimjgq0HMcR6glnAFQUGVErEhHFzqxM-k4mg';
+var CF_TYPE  = 'achivments';
+
+var SNILS_DATA = {
+  dept_agro: [
+    {
+      name: 'СНИЛ «ЭКОС»',
+      lead: 'Становская Анастасия Владимировна, к.э.н., доцент',
+      desc: 'Исследования в области экологической экономики и устойчивого природопользования.'
+    },
+    {
+      name: 'СНИЛ «Агроэкономика»',
+      lead: 'Соболь Кирилл Николаевич, к.э.н., доцент',
+      desc: 'Анализ экономических процессов в агропромышленном комплексе, разработка моделей повышения эффективности сельскохозяйственного производства.'
+    }
+  ],
+  dept_ind: [
+    {
+      name: 'СНИЛ «Инноватика»',
+      lead: 'Довыдова Ольга Григорьевна, м.э.н.',
+      desc: 'Исследование инновационных процессов на промышленных предприятиях, разработка инструментов оценки инновационного потенциала.'
+    }
+  ],
+  dept_nat: [
+    {
+      name: 'СНИЛ «MacroVision»',
+      lead: 'Точко А.Н., старший преподаватель; Маркидонова А.В., старший преподаватель ',
+      desc: 'Изучение микроэкономических процессов и механизмов государственного регулирования национальной экономики.'
+    }
+  ],
+  dept_org: []
+};
+
+var DEPTS = [
+  {id:'dept_agro', short:'Экономики АПК и природопользования', ini:'АПК',
+   title:'Кафедра экономики АПК и природопользования',
+   url:'http://fm.bseu.by/agricultural_economics',
+   head:'Королев Андрей Валерьевич, к.э.н., доцент',
+   desc:'Исследования в области агроэкономики, природопользования и устойчивого развития АПК.',
+   descgl:'Научные достижения студентов групп ДКА, ДКХ, ДКЭ'},
+  {id:'dept_ind', short:'Экономика предприятий', ini:'ЭПП',
+   title:'Кафедра экономики промышленных предприятий',
+   url:'http://fm.bseu.by/industrial_economics',
+   head:'Нехорошева Людмила Николаевна, д.э.н., профессор',
+   desc:'Разработка моделей управления, анализ эффективности и конкурентоспособности промышленных предприятий.',
+   descgl:'Научные достижения студентов групп ДКП, ДКС'},
+  {id:'dept_nat', short:'Нац. экономики и гос. управления', ini:'НЭ',
+   title:'Кафедра национальной экономики и государственного управления',
+   url:'http://fm.bseu.by/national_economy',
+   head:'Буховец Татьяна Валерьевна к.э.н., доцент',
+   desc:'Изучение макроэкономических процессов, государственного управления и региональной политики.',
+   descgl:'Научные достижения студентов групп ДКМ, ДКН'},
+  {id:'dept_org', short:'Организации и управления', ini:'ОУ',
+   title:'Кафедра организации и управления',
+   url:'http://fm.bseu.by/organization_and_management',
+   head:'Беляцкий Николай Петрович, д.э.н., профессор',
+   desc:'Исследования в сфере менеджмента, организационного поведения и стратегического управления.',
+   descgl:'Научные достижения студентов групп ДКП, ДКР, ДКТ, ДКУ'}
+];
+
+// Расширенная структура данных с поддержкой новых типов работ
+var DEMO = {
+  dept_agro:[
+    {id:1,title:'Оценка экономической эффективности органического земледелия в Минской области',student:'Иванова Анастасия Сергеевна',supervisor:'Петров В.Н.',year:'3 курс, 2026',type:'ind',link:'https://elib.bseu.by',
+      diplomas:['./diploma1.jpg','./diploma2.jpg'],
+      publication:{journal:'Журнал сельского хозяйства',volume:'№5',pages:'123-135',doi:'10.1234/jag.2026.05'},
+      olim:null,
+      nirs:null,
+      impl:null},
+    {id:2,title:'Цифровые технологии в АПК: тенденции и перспективы',student:'Романов Павел Олегович',supervisor:'Сидорова Е.В.',year:'4 курс, 2026',type:'snil',link:'',
+      diplomas:['./diploma3.jpg'],
+      publication:null,
+      olim:{name:'Республиканская олимпиада студентов',place:'1 место',date:'май 2026'},
+      nirs:{status:'Включена в реестр СНИЛ',date:'апрель 2026'},
+      impl:null}
+  ],
+  dept_ind:[
+    {id:3,title:'Совершенствование системы бюджетирования на промышленных предприятиях',student:'Алексеева Мария Александровна',supervisor:'Громов Д.С.',year:'5 курс, 2025',type:'ind',link:'https://elib.bseu.by',
+      diplomas:[],
+      publication:{journal:'Экономический анализ',volume:'№2',pages:'45-58',doi:'10.1234/ea.2025.02'},
+      olim:null,
+      nirs:null,
+      impl:{company:'ОАО «Завод № 5»',status:'Внедрено',date:'март 2025',result:'Сокращение затрат на 15%'}},
+    {id:4,title:'Оценка инвестиционной привлекательности предприятий машиностроения',student:'Борисов Андрей Игоревич',supervisor:'Ткачёв Р.М.',year:'4 курс, 2026',type:'snil',link:'https://elib.bseu.by',
+      diplomas:['./diploma4.jpg','./diploma5.jpg'],
+      publication:null,
+      olim:null,
+      nirs:{status:'Включена в реестр СНИЛ «Инноватика»',date:'май 2026'},
+      impl:null}
+  ],
+  dept_nat:[
+    {id:5,title:'Государственно-частное партнёрство как инструмент развития инфраструктуры',student:'Власова Ольга Николаевна',supervisor:'Карпов С.А.',year:'5 курс, 2025',type:'ind',link:'',
+      diplomas:[],
+      publication:null,
+      olim:{name:'Конкурс лучших студенческих работ ФЭМ',place:'2 место',date:'март 2025'},
+      nirs:null,
+      impl:null},
+    {id:6,title:'Цифровая трансформация государственного управления',student:'Гончаренко Виктор Леонидович',supervisor:'Морозова И.В.',year:'4 курс, 2026',type:'snil',link:'https://elib.bseu.by',
+      diplomas:['./diploma6.jpg'],
+      publication:null,
+      olim:null,
+      nirs:{status:'Включена в реестр СНИЛ «MacroVision»',date:'июнь 2026'},
+      impl:null}
+  ],
+  dept_org:[
+    {id:7,title:'Корпоративная культура как фактор повышения эффективности организации',student:'Соколова Виктория Дмитриевна',supervisor:'Лебедева Т.К.',year:'3 курс, 2026',type:'ind',link:'',
+      diplomas:['./diploma7.jpg'],
+      publication:{journal:'Управление человеческими ресурсами',volume:'№1',pages:'89-102',doi:'10.1234/uhr.2026.01'},
+      olim:null,
+      nirs:null,
+      impl:null},
+    {id:8,title:'Agile-методологии в управлении проектами на белорусских предприятиях',student:'Куприянов Илья Вадимович',supervisor:'Фёдоров А.Р.',year:'5 курс, 2025',type:'snil',link:'https://elib.bseu.by',
+      diplomas:['./diploma8.jpg'],
+      publication:null,
+      olim:null,
+      nirs:{status:'Включена в реестр СНИЛ',date:'май 2025'},
+      impl:{company:'ООО «ITSolutions»',status:'Внедрено',date:'февраль 2025',result:'Улучшение скорости разработки на 30%'}}
+  ]
+};
+
+var achData = JSON.parse(JSON.stringify(DEMO));
+
+function getTypeInfo(type) {
+  var types = {
+    ind:  {label:'Индивидуальная работа', color:'i', class:'atag-i'},
+    snil: {label:'В рамках СНИЛ', color:'s', class:'atag-s'},
+    olim: {label:'Олимпиада', color:'g', class:'atag-g'},
+    nirs: {label:'НИРС', color:'p', class:'atag-p'},
+    pub:  {label:'Публикация', color:'pub', class:'atag-pub'},
+    impl: {label:'Акт внедрения', color:'o', class:'atag-o'}
+  };
+  return types[type] || {label:'Неизвестный тип', color:'i', class:''};
+}
+
+function getMainType(ach) {
+  if (ach.type === 'ind' || ach.type === 'snil') return ach.type;
+  if (ach.impl) return 'impl';
+  if (ach.olim) return 'olim';
+  if (ach.nirs) return 'nirs';
+  if (ach.publication) return 'pub';
+  return 'ind';
+}
+
+function logoEl(id, size) {
+  var src = LOGOS[id];
+  var d = null;
+  for (var i = 0; i < DEPTS.length; i++) { if (DEPTS[i].id === id) { d = DEPTS[i]; break; } }
+  var ini = d ? d.ini : '?';
+  var fs = size < 36 ? '.62rem' : size < 60 ? '.85rem' : '1.1rem';
+  if (src) return '<img src="' + src + '" style="width:' + size + 'px;height:' + size + 'px;object-fit:contain;border-radius:6px"/>';
+  return '<div style="width:' + size + 'px;height:' + size + 'px;border-radius:6px;background:var(--lb);display:flex;align-items:center;justify-content:center;font-size:' + fs + ';font-weight:800;color:var(--blue);flex-shrink:0">' + ini + '</div>';
+}
+
+function initLogos() {
+  ['faculty','sno'].forEach(function(k) {
+    var src = LOGOS[k];
+    var img = document.getElementById('img-' + k);
+    var ph  = document.getElementById('ph-' + k);
+    if (src) { img.src = src; img.style.display = 'block'; ph.style.display = 'none'; }
+    else     { img.style.display = 'none'; ph.style.display = 'block'; }
+  });
+}
+
+var deptNav = document.getElementById('dept-nav');
+DEPTS.forEach(function(d) {
+  var el = document.createElement('div');
+  el.className = 'si';
+  el.id = 'nav-' + d.id;
+  el.innerHTML = '<div class="slogo">' + logoEl(d.id, 28) + '</div><span style="line-height:1.3">' + d.short + '</span>';
+  el.onclick = function() { showPage(d.id); };
+  deptNav.appendChild(el);
+});
+
+function setActiveNav(id) {
+  document.querySelectorAll('.si').forEach(function(el) { el.classList.remove('active','red'); });
+  var el = document.getElementById('nav-' + id);
+  if (el) { el.classList.add('active'); if (DEPTS.some(function(d){return d.id===id;})) el.classList.add('red'); }
+  var dept = DEPTS.find(function(d){return d.id===id;});
+  var titles = {home:'Главная'};
+  document.getElementById('topbar-title').textContent = dept ? dept.short : (titles[id] || '');
+}
+
+function showPage(id) {
+  setActiveNav(id);
+  closeSidebar();
+  var app = document.getElementById('app');
+  if (id === 'home') { renderHome(app); return; }
+  var dept = DEPTS.find(function(d){return d.id===id;});
+  if (dept) renderDept(app, dept);
+}
+
+function renderHome(app) {
+  var h = '<div class="intro"><h2>Добро пожаловать на ФЭМ.ЭКСПО 2026</h2><p>Приглашаем вас на онлайн-выставку научно-исследовательских достижений студентов факультета экономики и менеджмента 2025 года. Это уникальная цифровая площадка, где мы собрали самые смелые идеи, глубокие аналитические исследования и инновационные проекты наших студентов. От макроэкономических прогнозов до эффективных HR-стратегий — познакомьтесь с работами, которые формируют новый облик профессионального сообщества.</p></div><div class="dgrid">';
+  DEPTS.forEach(function(d) {
+    var ach = achData[d.id] || [];
+    var ind = ach.filter(function(a){return a.type==='ind';}).length;
+    var snl = ach.filter(function(a){return a.type==='snil';}).length;
+    h += '<div class="dc" onclick="showPage(\'' + d.id + '\')">'
+      + '<div class="dclogo">' + logoEl(d.id, 48) + '</div>'
+      + '<h3>' + d.title + '</h3><p>' + d.descgl + '</p>'
+      + '<div class="stats"><span class="stat">' + ind + ' индивид.</span><span class="stat r">' + snl + ' СНИЛ</span></div>'
+      + '</div>';
+  });
+  app.innerHTML = h + '</div>';
+}
+
+function renderSnilBlock(dept) {
+  var snils = SNILS_DATA[dept.id] || [];
+  var ach = achData[dept.id] || [];
+  var btnHtml = snils.length > 0
+    ? '<button class="snilb-btn" onclick="openSnilModal(\'' + dept.id + '\')">Статистика СНИЛов →</button>'
+    : '';
+
+  var h = '<div class="snilb">'
+    + '<div class="snilb-header"><h4>СНИЛы кафедры</h4>' + btnHtml + '</div>';
+
+  if (snils.length === 0) {
+    h += '<div class="snilb-none">На данной кафедре СНИЛы отсутствуют</div>';
+  } else {
+    h += '<div class="snilb-list">';
+    snils.forEach(function(s) {
+      h += '<div class="snilb-item">'
+        + '<div class="snilb-dot"></div>'
+        + '<div><div class="snilb-name">' + s.name + '</div>'
+        + '<div class="snilb-lead">Руководитель: ' + s.lead + '</div></div>'
+        + '</div>';
+    });
+    h += '</div>';
+    h += '<div class="snilb-footer">'
+      + 'Полный список всех работ и достижений СНИЛов размещен в '
+      + '<a href="https://reestr-fem-nauka.vercel.app/" target="_blank">Реестре научно-исследовательских работ кафедр ФЭМ</a>'
+      + '</div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function openSnilModal(deptId) {
+  var dept = DEPTS.find(function(d){return d.id===deptId;});
+  var snils = SNILS_DATA[deptId] || [];
+  var ach = achData[deptId] || [];
+
+  var h = '<button class="mc" onclick="closeSnilModalDirect()">✕</button>'
+    + '<h3>СНИЛы — ' + dept.title + '</h3>';
+
+  if (snils.length === 0) {
+    h += '<div class="no-snil">На данной кафедре СНИЛы отсутствуют</div>';
+  } else {
+    snils.forEach(function(s) {
+      var totalSnil = ach.filter(function(a){return a.type==='snil';}).length;
+      var totalInd  = ach.filter(function(a){return a.type==='ind';}).length;
+      var totalAll  = ach.length;
+
+      h += '<div class="snilcard">'
+        + '<div class="snilcard-title">' + s.name + '</div>'
+        + '<div class="snilcard-row"><span class="snilcard-label">Руководитель</span><span class="snilcard-val">' + s.lead + '</span></div>'
+        + '<div class="snilcard-row"><span class="snilcard-label">Направление</span><span class="snilcard-val">' + s.desc + '</span></div>';
+
+      if (snils.indexOf(s) === snils.length - 1) {
+        h += '<hr style="border:none;border-top:1px solid var(--bdr);margin:.7rem 0"/>'
+          + '<div style="font-size:.78rem;color:#999;margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Статистика работ по кафедре</div>'
+          + '<div class="snilcard-stats">'
+          + '<span class="snilcard-stat blue">Всего работ: ' + totalAll + '</span>'
+          + '<span class="snilcard-stat blue">Индивидуальных: ' + totalInd + '</span>'
+          + '<span class="snilcard-stat red">В рамках СНИЛ: ' + totalSnil + '</span>'
+          + '</div>';
+      }
+
+      h += '</div>';
+    });
+  }
+
+  document.getElementById('snilModal-content').innerHTML = h;
+  document.getElementById('snilModal').classList.add('open');
+}
+
+function closeSnilModal(e) { if (e.target.id === 'snilModal') document.getElementById('snilModal').classList.remove('open'); }
+function closeSnilModalDirect() { document.getElementById('snilModal').classList.remove('open'); }
+
+function renderDept(app, dept) {
+  var ach = achData[dept.id] || [];
+  var ind = ach.filter(function(a){return a.type==='ind';}).length;
+  var snl = ach.filter(function(a){return a.type==='snil';}).length;
+
+  app.innerHTML = '<div class="dh">'
+    + '<div class="dht"><div class="dblogo">' + logoEl(dept.id, 72) + '</div>'
+    + '<div style="flex:1"><h2 style="font-size:1.15rem;font-weight:800;color:var(--blue);margin-bottom:.3rem;line-height:1.35">' + dept.title + '</h2>'
+    + '<p style="font-size:.86rem;color:#555;line-height:1.6;margin-bottom:.5rem">' + dept.desc + '</p>'
+    + '<a href="' + dept.url + '" target="_blank" class="dlink">Страница кафедры на сайте факультета ↗</a></div></div>'
+    + '<div class="dmeta">'
+    + '<div class="dmi">Заведующий кафедрой: <span>' + dept.head + '</span></div>'
+    + '<div class="dmi">Всего работ студентов: <span>' + ach.length + '</span></div>'
+    + '<div class="dmi">Индивидуальных: <span>' + ind + '</span></div>'
+    + '<div class="dmi" style="color:var(--red)">В рамках СНИЛ: <span style="color:var(--red)">' + snl + '</span></div>'
+    + '</div></div>'
+    + renderSnilBlock(dept)
+    + '<div class="tabs">'
+    + '<button class="tab ab" onclick="filterAch(\'all\',this,\'' + dept.id + '\')">Все работы (' + ach.length + ')</button>'
+    + '<button class="tab" onclick="filterAch(\'ind\',this,\'' + dept.id + '\')">Индивидуальные (' + ind + ')</button>'
+    + '<button class="tab" onclick="filterAch(\'snil\',this,\'' + dept.id + '\')">В рамках СНИЛ (' + snl + ')</button>'
+    + '</div>'
+    + '<div class="agrid" id="ach-grid">' + renderAchGrid(ach, 'all') + '</div>';
+}
+
+function filterAch(type, btn, deptId) {
+  document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('ab','ar','ag','ap','ao');});
+  var classes = {all:'ab', ind:'ab', snil:'ar'};
+  btn.classList.add(classes[type] || 'ab');
+  document.getElementById('ach-grid').innerHTML = renderAchGrid(achData[deptId] || [], type);
+}
+
+function renderAchGrid(ach, type) {
+  var list = type === 'all' ? ach : ach.filter(function(a){return a.type===type;});
+  if (!list.length) return '<div class="empty">Достижения не найдены</div>';
+  return list.map(function(a) {
+    var mainType = getMainType(a);
+    var typeInfo = getTypeInfo(a.type);
+    var classes = {ind:'', snil:'snil', olim:'olim', nirs:'nirs', impl:'impl'}[mainType] || '';
+    return '<div class="ac' + (classes ? ' ' + classes : '') + '" onclick="openModal(' + a.id + ')">'
+      + '<div class="at">' + a.title + '</div>'
+      + '<div class="as">' + a.student + '</div>'
+      + '<div class="ay">' + a.year + '</div>'
+      + '<span class="atag ' + typeInfo.color + '">' + typeInfo.label + '</span>'
+      + '</div>';
+  }).join('');
+}
+
+function openModal(id) {
+  var ach = null, deptName = '';
+  var keys = Object.keys(achData);
+  for (var i = 0; i < keys.length; i++) {
+    var f = achData[keys[i]].find(function(a){return a.id===id;});
+    if (f) { ach = f; var d = DEPTS.find(function(d){return d.id===keys[i];}); deptName = d ? d.short : ''; break; }
+  }
+  if (!ach) return;
+
+  var typeInfo = getTypeInfo(ach.type);
+  var mainType = getMainType(ach);
+  
+  var h = '<button class="mc" onclick="document.getElementById(\'modal\').classList.remove(\'open\')">✕</button>'
+    + '<span class="mtag ' + typeInfo.color + '">' + typeInfo.label + '</span>'
+    + '<h3>' + ach.title + '</h3><hr class="mdiv"/>'
+    + '<div class="mr"><span class="ml">ФИО студента</span><span class="mv">' + ach.student + '</span></div>'
+    + '<div class="mr"><span class="ml">Научный руководитель</span><span class="mv">' + ach.supervisor + '</span></div>'
+    + '<div class="mr"><span class="ml">Группа / год</span><span class="mv">' + ach.year + '</span></div>'
+    + '<div class="mr"><span class="ml">Кафедра</span><span class="mv">' + deptName + '</span></div>'
+    + (ach.link ? '<div class="mr"><span class="ml">Ссылка на работу</span><a class="mlink" href="' + ach.link + '" target="_blank">' + ach.link + '</a></div>' : '');
+
+  // Дипломы и сертификаты
+  if (ach.diplomas && ach.diplomas.length > 0) {
+    h += '<div class="modal-section"><h4>📜 Дипломы и сертификаты</h4>'
+      + '<div class="gallery">';
+    ach.diplomas.forEach(function(url, idx) {
+      h += '<div class="gallery-item" onclick="openLightbox(\'' + url + '\', event)">'
+        + '<img src="' + url + '" alt="Диплом ' + (idx+1) + '"/>'
+        + '<span class="gallery-count">' + (idx+1) + '</span>'
+        + '</div>';
+    });
+    h += '</div></div>';
+  }
+
+  // Публикация
+  if (ach.publication) {
+    var pub = ach.publication;
+    h += '<div class="modal-section"><h4>📄 Публикация</h4>'
+      + '<div class="mr"><span class="ml">Журнал</span><span class="mv">' + pub.journal + '</span></div>'
+      + '<div class="mr"><span class="ml">Выпуск</span><span class="mv">' + pub.volume + '</span></div>'
+      + '<div class="mr"><span class="ml">Страницы</span><span class="mv">' + pub.pages + '</span></div>'
+      + (pub.doi ? '<div class="mr"><span class="ml">DOI</span><span class="mv">' + pub.doi + '</span></div>' : '')
+      + '</div>';
+  }
+
+  // Олимпиада
+  if (ach.olim) {
+    var ol = ach.olim;
+    h += '<div class="modal-section"><h4>🏆 Олимпиада</h4>'
+      + '<div class="mr"><span class="ml">Название</span><span class="mv">' + ol.name + '</span></div>'
+      + '<div class="mr"><span class="ml">Результат</span><span class="mv">' + ol.place + '</span></div>'
+      + '<div class="mr"><span class="ml">Дата</span><span class="mv">' + ol.date + '</span></div>'
+      + '</div>';
+  }
+
+  // НИРС
+  if (ach.nirs) {
+    var nirs = ach.nirs;
+    h += '<div class="modal-section"><h4>🔬 Научно-исследовательская работа</h4>'
+      + '<div class="mr"><span class="ml">Статус</span><span class="mv">' + nirs.status + '</span></div>'
+      + '<div class="mr"><span class="ml">Дата регистрации</span><span class="mv">' + nirs.date + '</span></div>'
+      + '</div>';
+  }
+
+  // Акт внедрения
+  if (ach.impl) {
+    var impl = ach.impl;
+    h += '<div class="modal-section"><h4>✅ Акт внедрения</h4>'
+      + '<div class="mr"><span class="ml">Организация</span><span class="mv">' + impl.company + '</span></div>'
+      + '<div class="mr"><span class="ml">Статус</span><span class="mv">' + impl.status + '</span></div>'
+      + '<div class="mr"><span class="ml">Дата внедрения</span><span class="mv">' + impl.date + '</span></div>'
+      + (impl.result ? '<div class="mr"><span class="ml">Результат</span><span class="mv">' + impl.result + '</span></div>' : '')
+      + '</div>';
+  }
+
+  document.getElementById('modal-content').innerHTML = h;
+  document.getElementById('modal').classList.add('open');
+}
+
+function openLightbox(url, e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lightbox-img').src = url;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox(e) {
+  if (e && e.target.id !== 'lightbox') return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+function closeModal(e) { if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open'); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); }
+
+async function loadFromContentful() {
+  // Оставлено для совместимости, но использует локальные данные
+  // В продакшене можно расширить для загрузки из CMS
+  return;
+}
+
+initLogos();
+loadFromContentful();
+showPage('home');
+</script>
+</body>
+</html>
